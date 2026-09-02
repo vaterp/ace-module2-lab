@@ -50,6 +50,9 @@ export function getUserProfile () {
     }
 
     let username = user.username
+    if (username) {
+      username = username.replace(/#{/g, '\\#{')
+    }
     username = '\\' + username
 
     const themeKey = config.get<string>('application.theme') as keyof typeof themes
